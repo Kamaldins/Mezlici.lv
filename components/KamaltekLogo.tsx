@@ -1,32 +1,34 @@
 import React from 'react';
-import { Hexagon } from 'phosphor-react';
 import clsx from 'clsx';
 
 interface KamaltekLogoProps {
   className?: string;
   classNameIcon?: string;
   classNameText?: string;
-  classNameSub?: string;
 }
 
 const KamaltekLogo: React.FC<KamaltekLogoProps> = ({ 
   className,
   classNameIcon = "text-white group-hover:text-taupe-500",
-  classNameText = "text-white",
-  classNameSub = "text-taupe-500"
+  classNameText = "text-white"
 }) => {
   return (
-    <div className={clsx("flex flex-col gap-2", className)}>
-      <Hexagon 
-        size={48} 
-        weight="duotone" 
-        className={clsx("mb-1 transition-colors duration-300", classNameIcon)} 
-      />
-      <span className={clsx("text-3xl font-sans font-black tracking-tighter leading-none transition-colors duration-300", classNameText)}>
-        KAMALTEK
-      </span>
-      <span className={clsx("text-[10px] uppercase tracking-[0.4em] font-bold transition-colors duration-300", classNameSub)}>
-        Digital Solutions
+    <div className={clsx("flex flex-row items-center gap-2", className)}>
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 6 20 12" 
+        fill="none" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round" 
+        strokeLinejoin="round"
+        className={clsx("w-7 h-auto transition-colors duration-300", classNameIcon)}
+      >
+        <path d="M14 19l-7-7 7-7" />
+        <path d="M8.5 17l-5-5 5-5" />
+      </svg>
+      <span className={clsx("text-2xl font-sans font-bold tracking-tight leading-none transition-colors duration-300", classNameText)}>
+        KamalTek
       </span>
     </div>
   );

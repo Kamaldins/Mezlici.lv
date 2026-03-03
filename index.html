@@ -1,84 +1,115 @@
 <!DOCTYPE html>
-<html lang="lv" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    
-    <title>Mežlīči | Atpūta pie Daugavas</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<html lang="lv">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              cream: {
-                DEFAULT: '#FAFAFA', // Slight off-white, cleaner than #F9F9F9
-                dark: '#050505'     // Deep Black
-              },
-              charcoal: {
-                800: '#2A2A2A',     // Darker grey for better text contrast
-                900: '#111111',     // Almost black
-              },
-              taupe: { 
-                500: '#A69279', 
-                600: '#8C7B65'
-              },
-              stone: {
-                100: '#F5F5F7',     // Light background elements
-                200: '#E5E5EA',     // Borders
-                DEFAULT: '#D1D1D6', // Stronger borders
-                dark: '#1C1C1E'     // Dark mode cards
-              },
-              mantle: {
-                DEFAULT: '#121212'
-              }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <title>Mežlīči | Atpūta pie Daugavas</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cream: {
+              DEFAULT: '#FAFAFA', // Slight off-white, cleaner than #F9F9F9
+              dark: '#050505'     // Deep Black
             },
-            fontFamily: {
-              serif: ['"Lora"', 'serif'],
-              sans: ['"Inter"', 'sans-serif'],
+            charcoal: {
+              800: '#2A2A2A',     // Darker grey for better text contrast
+              900: '#111111',     // Almost black
             },
-            transitionDuration: {
-              '400': '400ms',
+            taupe: {
+              500: '#A69279',
+              600: '#8C7B65'
             },
-            boxShadow: {
-              'glow': '0 0 20px rgba(166, 146, 121, 0.3)',
-              'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+            stone: {
+              100: '#F5F5F7',     // Light background elements
+              200: '#E5E5EA',     // Borders
+              DEFAULT: '#D1D1D6', // Stronger borders
+              dark: '#1C1C1E'     // Dark mode cards
+            },
+            mantle: {
+              DEFAULT: '#121212'
             }
+          },
+          fontFamily: {
+            serif: ['"Lora"', 'serif'],
+            sans: ['"Inter"', 'sans-serif'],
+          },
+          transitionDuration: {
+            '400': '400ms',
+          },
+          boxShadow: {
+            'glow': '0 0 20px rgba(166, 146, 121, 0.3)',
+            'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
           }
         }
       }
-    </script>
-    <style>
-      html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
-      
-      body { 
-        background-color: #FAFAFA; 
-        transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .dark body { 
-        background-color: #050505; 
-        color: #E5E5E5; 
-      }
+    }
+  </script>
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
 
-      #root { min-height: 100vh; display: flex; flex-direction: column; }
-      
-      .hero-text-shadow { text-shadow: 0 4px 30px rgba(0,0,0,0.5); }
-      
-      .reveal-text { opacity: 1; transform: none; }
-      
-      /* Lenis */
-      html.lenis, html.lenis body { height: auto; }
-      .lenis.lenis-smooth { scroll-behavior: auto !important; }
-      .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-      .lenis.lenis-stopped { overflow: hidden; }
-    </style>
-    <script type="importmap">
+    body {
+      background-color: #FAFAFA;
+      transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .dark body {
+      background-color: #050505;
+      color: #E5E5E5;
+    }
+
+    #root {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-text-shadow {
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .reveal-text {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Lenis */
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+  </style>
+  <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@18.2.0",
@@ -87,7 +118,7 @@
     "react-dom/": "https://esm.sh/react-dom@18.2.0/",
     "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?external=react,react-dom",
     "phosphor-react": "https://esm.sh/phosphor-react@1.4.1?external=react,react-dom",
-    "@studio-freight/lenis": "https://esm.sh/@studio-freight/lenis@1.0.42",
+    "lenis": "https://esm.sh/lenis@latest",
     "gsap": "https://esm.sh/gsap@3.12.5",
     "gsap/ScrollTrigger": "https://esm.sh/gsap@3.12.5/ScrollTrigger",
     "clsx": "https://esm.sh/clsx@2.1.0",
@@ -95,9 +126,22 @@
   }
 }
 </script>
-  </head>
-  <body class="text-charcoal-900 font-sans antialiased selection:bg-taupe-500 selection:text-white dark:text-gray-100">
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
+  <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('theme');
+          if (!theme) {
+            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.classList.add(theme);
+        } catch (e) { }
+      })();
+  </script>
+</head>
+
+<body class="text-charcoal-900 font-sans antialiased selection:bg-taupe-500 selection:text-white dark:text-gray-100">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
 </html>

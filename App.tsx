@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useLayoutEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation, Navigate, useParams } from 'react-router-dom';
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 
 // Components
 import Header from './components/Header';
@@ -46,36 +46,30 @@ const ScrollHandler = ({ lenis }: { lenis: Lenis | null }) => {
 const AppContent: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  
+
   // Theme state initialization
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     try {
-      return (localStorage.getItem('theme') as 'light' | 'dark') || 'light';
+      const stored = localStorage.getItem('theme') as 'light' | 'dark' | null;
+      if (stored) return stored;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     } catch {
       return 'light';
     }
   });
-  
+
   const lenisRef = useRef<Lenis | null>(null);
 
-  // Force Theme Application
-  const applyTheme = (newTheme: 'light' | 'dark') => {
+  const location = useLocation();
+
+  useLayoutEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove('light', 'dark');
-    root.classList.add(newTheme);
-    localStorage.setItem('theme', newTheme);
-  };
-
-  // 1. Apply on mount/change
-  useLayoutEffect(() => {
-    applyTheme(theme);
-  }, [theme]);
-
-  // 2. Safeguard: Re-apply on location change to prevent loss during navigation
-  const location = useLocation();
-  useLayoutEffect(() => {
-    applyTheme(theme);
-  }, [location, theme]);
+    root.classList.add(theme);
+    try {
+      localStorage.setItem('theme', theme);
+    } catch (e) { }
+  }, [theme, location.pathname]);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -85,8 +79,10 @@ const AppContent: React.FC = () => {
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1,
+      syncTouch: true,
+      touchMultiplier: 2,
     });
-    
+
     lenisRef.current = lenis;
 
     function raf(time: number) {
@@ -116,13 +112,13 @@ const AppContent: React.FC = () => {
   return (
     <>
       {loading && <Preloader onComplete={() => setLoading(false)} />}
-      
+
       <ScrollHandler lenis={lenisRef.current} />
 
       <div className="min-h-screen flex flex-col relative bg-cream dark:bg-cream-dark transition-colors duration-500">
         <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
         <MenuOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-        
+
         <Routes>
           <Route path="/" element={<Navigate to="/lv" replace />} />
           <Route path="/:lang" element={<Home isPreloading={loading} />} />
