@@ -77,6 +77,10 @@ const AppContent: React.FC = () => {
     const root = window.document.documentElement;
     root.classList.remove('light', 'dark');
     root.classList.add(theme);
+
+    // Sync the injected body style to fix the "zebra effect" / partial theme switch
+    document.body.style.backgroundColor = theme === 'dark' ? '#050505' : '#FAFAFA';
+
     try {
       localStorage.setItem('theme', theme);
       // Set cookie for 1 year
