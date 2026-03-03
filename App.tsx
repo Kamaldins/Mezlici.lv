@@ -52,6 +52,15 @@ const AppContent: React.FC = () => {
   // Theme state initialization
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     try {
+      const getCookie = (name: string) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop()?.split(';').shift();
+      };
+
+      const cookieTheme = getCookie('theme') as 'light' | 'dark' | undefined;
+      if (cookieTheme) return cookieTheme;
+
       const stored = localStorage.getItem('theme') as 'light' | 'dark' | null;
       if (stored) return stored;
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -70,6 +79,8 @@ const AppContent: React.FC = () => {
     root.classList.add(theme);
     try {
       localStorage.setItem('theme', theme);
+      // Set cookie for 1 year
+      document.cookie = `theme=${theme};path=/;max-age=31536000;SameSite=Lax`;
     } catch (e) { }
   }, [theme, location.pathname]);
 

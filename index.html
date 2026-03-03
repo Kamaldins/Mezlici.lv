@@ -129,11 +129,19 @@
   <script>
       (function () {
         try {
-          var theme = localStorage.getItem('theme');
+          var theme = document.cookie.match(/theme=([^;]+)/);
+          if (theme) {
+            theme = theme[1];
+          } else {
+            theme = localStorage.getItem('theme');
+          }
+
           if (!theme) {
             theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
           }
           document.documentElement.classList.add(theme);
+          // Set solid body background color to match theme instantly
+          document.body.style.backgroundColor = theme === 'dark' ? '#050505' : '#FAFAFA';
         } catch (e) { }
       })();
   </script>

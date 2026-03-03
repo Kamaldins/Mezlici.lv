@@ -54,10 +54,13 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
     };
   }, [onComplete]);
 
+  const isDark = document.documentElement.classList.contains('dark');
+
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-cream dark:bg-cream-dark transition-colors duration-500"
+      className="fixed inset-0 z-[9999] flex items-center justify-center transition-colors duration-500"
+      style={{ backgroundColor: isDark ? '#050505' : '#FAFAFA' }}
     >
       <div className="flex flex-col items-center gap-6 overflow-hidden p-4">
         <span
