@@ -7,20 +7,20 @@ interface KamaltekLogoProps {
   classNameText?: string;
 }
 
-const KamaltekLogo: React.FC<KamaltekLogoProps> = ({ 
+const KamaltekLogo: React.FC<KamaltekLogoProps> = ({
   className,
   classNameIcon = "text-white group-hover:text-taupe-500",
   classNameText = "text-white"
 }) => {
   return (
     <div className={clsx("flex flex-row items-center gap-2", className)}>
-      <svg 
-        xmlns="http://www.w3.org/2000/svg" 
-        viewBox="0 6 20 12" 
-        fill="none" 
-        stroke="currentColor" 
-        strokeWidth="2" 
-        strokeLinecap="round" 
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 6 20 12"
+        fill="none"
+        stroke="#56DA74"
+        strokeWidth="2"
+        strokeLinecap="round"
         strokeLinejoin="round"
         className={clsx("w-7 h-auto transition-colors duration-300", classNameIcon)}
       >

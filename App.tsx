@@ -16,7 +16,7 @@ import Policy from './pages/Policy';
 import Sauna from './pages/Sauna';
 
 // Scroll handling component
-const ScrollHandler = ({ lenis }: { lenis: Lenis | null }) => {
+const ScrollHandler = ({ lenis, setLoading }: { lenis: Lenis | null, setLoading: (l: boolean) => void }) => {
   const { pathname } = useLocation();
   const { lang } = useParams();
   const prevLang = useRef(lang);
@@ -28,17 +28,19 @@ const ScrollHandler = ({ lenis }: { lenis: Lenis | null }) => {
 
     if (lenis) {
       if (isLangChange) {
-        // Smooth scroll to top for language change animation
-        lenis.scrollTo(0, { duration: 1.2, lock: true });
+        // Smooth scroll to top, pause briefly, then trigger language loading animation
+        lenis.scrollTo(0, { immediate: true });
+        setLoading(true); // Bring loader back
       } else {
-        // Immediate reset for page navigation
+        // Immediate reset for nested page navigation without lang change
         lenis.scrollTo(0, { immediate: true });
       }
     } else {
       // Fallback for no Lenis
-      window.scrollTo({ top: 0, behavior: isLangChange ? 'smooth' : 'auto' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      if (isLangChange) setLoading(true);
     }
-  }, [pathname, lang, lenis]);
+  }, [pathname, lang, lenis, setLoading]);
 
   return null;
 };
@@ -73,14 +75,14 @@ const AppContent: React.FC = () => {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 1.5,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -8 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
+      wheelMultiplier: 1.0,
       syncTouch: true,
-      touchMultiplier: 2,
+      touchMultiplier: 1.5,
     });
 
     lenisRef.current = lenis;
@@ -113,7 +115,7 @@ const AppContent: React.FC = () => {
     <>
       {loading && <Preloader onComplete={() => setLoading(false)} />}
 
-      <ScrollHandler lenis={lenisRef.current} />
+      <ScrollHandler lenis={lenisRef.current} setLoading={setLoading} />
 
       <div className="min-h-screen flex flex-col relative bg-cream dark:bg-cream-dark transition-colors duration-500">
         <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />

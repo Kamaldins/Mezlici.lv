@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PHONE_HREF, ADDRESS, MAPS_LINK, WAZE_LINK, APPLE_MAPS_LINK, PHONE_NUMBER } from '../constants';
 import { Link, useParams } from 'react-router-dom';
-import { House, Tree, MapPin, CheckCircle, ArrowRight, CaretRight, MapTrifold, Car, Compass, Phone, EnvelopeSimple } from 'phosphor-react';
+import { House, Tree, MapPin, CheckCircle, ArrowRight, CaretRight, MapTrifold, Car, Compass, Phone } from 'phosphor-react';
 import ExternalLink from '../components/ExternalLink';
 import SEO from '../components/SEO';
 import clsx from 'clsx';
@@ -77,7 +77,7 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
     lv: "brīvdienu māja, atpūta pie daugavas, pirts, namiņš mežā, ķegums, relaksācija, naktsmītne",
     en: "holiday home, rest by daugava, sauna, cabin in forest, kegums, relaxation, accommodation",
     ru: "дом отдыха, отдых у даугавы, баня, домик в лесу, кегумс, релаксация, ночлег"
-  }[currentLang as 'lv'|'en'|'ru'] || "brīvdienu māja";
+  }[currentLang as 'lv' | 'en' | 'ru'] || "brīvdienu māja";
 
   useEffect(() => {
     if (isPreloading) return;
@@ -112,10 +112,10 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
 
       // 2. Section Reveal Animations
       gsap.utils.toArray('.reveal-text').forEach((elem: any) => {
-        gsap.fromTo(elem, 
+        gsap.fromTo(elem,
           { y: 40, opacity: 0 },
-          { 
-            y: 0, opacity: 1, duration: 1, ease: "power3.out", 
+          {
+            y: 0, opacity: 1, duration: 1, ease: "power3.out",
             scrollTrigger: {
               trigger: elem,
               start: "top 90%",
@@ -126,7 +126,7 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
       });
 
       // 3. Hero Entry Animation
-      gsap.fromTo(".hero-anim", 
+      gsap.fromTo(".hero-anim",
         { y: 40, opacity: 0 },
         { y: 0, opacity: 1, duration: 1.2, stagger: 0.1, ease: "power4.out", delay: 0.2 }
       );
@@ -139,20 +139,20 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
 
   return (
     <main className="flex-1 w-full overflow-hidden bg-cream dark:bg-cream-dark transition-colors duration-500">
-      <SEO 
+      <SEO
         title={`Mežlīči | ${translations.subtitle || 'Atpūta pie Daugavas'}`}
         description={translations.desc || 'Brīvdienu māja pie Daugavas.'}
         keywords={seoKeywords}
         lang={currentLang}
       />
-      
+
       {/* --- HERO SECTION --- */}
       <section ref={heroRef} className="relative h-screen min-h-[600px] flex items-center px-4 md:px-6 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
+          <img
             id="hero-bg"
-            src="https://i.ibb.co/mVH0z4S8/Whats-App-Image-2025-10-25-at-16-40-18.jpg" 
-            className="w-full h-full object-cover scale-105" 
+            src="https://i.ibb.co/mVH0z4S8/Whats-App-Image-2025-10-25-at-16-40-18.jpg"
+            className="w-full h-full object-cover scale-105"
             alt="Mežlīči"
           />
           <div className="absolute inset-0 bg-black/30 dark:bg-black/50 transition-colors duration-500" />
@@ -164,14 +164,14 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
             {translations.tag}
           </span>
           <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] leading-[0.9] md:leading-[0.85] text-white mb-6 md:mb-8 hero-anim opacity-0 hero-text-shadow tracking-tight">
-            {translations.title}<br/>
+            {translations.title}<br />
             <span className="italic font-normal text-white/80">{translations.subtitle}</span>
           </h1>
           <p className="max-w-xl text-white/90 text-base md:text-2xl leading-relaxed hero-anim opacity-0 font-light drop-shadow-md mb-8 md:mb-12 text-balance">
             {translations.desc}
           </p>
           <div className="hero-anim opacity-0">
-            <button 
+            <button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="group inline-flex items-center gap-4 px-8 py-4 bg-white text-charcoal-900 rounded-full text-[11px] font-bold uppercase tracking-[0.2em] shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
@@ -193,25 +193,25 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            <FeatureCard 
+            <FeatureCard
               icon={<House size={32} weight="light" className="text-taupe-500" />}
               title={currentLang === 'lv' ? "Mājā pieejams" : currentLang === 'ru' ? "В доме имеется" : "In the House"}
               items={currentLang === 'lv' ? ["Pirts relaksācijai", "Pilnībā aprīkota virtuve", "Modernas labierīcības", "Guļamvieta līdz 10 viesiem"] : currentLang === 'ru' ? ["Баня для отдыха", "Оборудованная кухня", "Удобства", "До 10 спальных мест"] : ["Sauna for relaxation", "Fully equipped kitchen", "Modern amenities", "Sleeps up to 10 guests"]}
             />
-            <FeatureCard 
+            <FeatureCard
               icon={<Tree size={32} weight="light" className="text-taupe-500" />}
               title={currentLang === 'lv' ? "Āra aktivitātes" : currentLang === 'ru' ? "На улице" : "Outdoor Activities"}
               items={currentLang === 'lv' ? ["Peldvieta ar laipu", "Laiva & Kubls", "Aizverama terase", "Plaša pļava"] : currentLang === 'ru' ? ["Купальня с мостиком", "Лодка и чан", "Крытая терраса", "Просторный луг"] : ["Swimming area", "Boat & Hot tub", "Enclosed terrace", "Spacious meadow"]}
             />
-            <FeatureCard 
+            <FeatureCard
               icon={<MapPin size={32} weight="light" className="text-taupe-500" />}
               title={currentLang === 'lv' ? "Atrašanās vieta" : currentLang === 'ru' ? "Локация" : "Location"}
               items={currentLang === 'lv' ? ["Daugavas kreisais krasts", "Meža ieskauta vide", "Privāta piekļuve", "Tuvu Ķeguma pilsētai"] : currentLang === 'ru' ? ["Левый берег Даугавы", "В окружении леса", "Приватный доступ", "Рядом с Кегумсом"] : ["Left bank of Daugava", "Forest surroundings", "Private access", "Near Kegums city"]}
             />
           </div>
-          
+
           <div className="mt-12 md:mt-16 text-center reveal-text">
-             <Link 
+            <Link
               to={`/${currentLang}/sauna`}
               className="group inline-flex items-center gap-4 px-8 py-4 bg-transparent border border-charcoal-900/40 dark:border-white/40 text-charcoal-900 dark:text-gray-200 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-charcoal-900 hover:text-white dark:hover:bg-white dark:hover:text-charcoal-900 hover:-translate-y-1 transition-all duration-300"
             >
@@ -235,7 +235,7 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
                 {translations.location_desc}
               </p>
             </div>
-            
+
             {/* Navigation Buttons Control Group */}
             <div className="w-full md:w-auto grid grid-cols-2 md:grid-cols-3 gap-3">
               <ExternalLink href={WAZE_LINK} className={mapBtnClass}>
@@ -254,13 +254,13 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
           </div>
 
           <div className="h-[400px] md:h-[650px] w-full relative overflow-hidden rounded-[2rem] shadow-2xl border border-stone-200 dark:border-white/10 reveal-text">
-             {/* Map Integration - Reverted to Google Maps per request */}
-            <iframe 
+            {/* Map Integration - Reverted to Google Maps per request */}
+            <iframe
               src="https://maps.google.com/maps?q=56.7222882,24.7222041&t=h&z=15&ie=UTF8&iwloc=&output=embed"
-              width="100%" 
-              height="100%" 
-              style={{ border: 0 }} 
-              allowFullScreen 
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
               loading="lazy"
               title="Mežlīči Location"
               className="dark:filter dark:grayscale-[20%] dark:contrast-125 transition-all duration-500"
@@ -278,63 +278,49 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-            
+
             {/* Left Column: Contact Details (Redesigned for elegance) */}
             <div className="lg:col-span-5 flex flex-col gap-6 order-2 lg:order-1">
               <div className="bg-white dark:bg-stone-dark p-8 md:p-10 rounded-[2.5rem] shadow-soft border border-stone-200 dark:border-white/5 h-full flex flex-col justify-center">
-                 <p className="font-serif text-2xl text-charcoal-900 dark:text-gray-100 italic leading-relaxed mb-10">
-                   {translations.quote}
-                 </p>
+                <p className="font-serif text-2xl text-charcoal-900 dark:text-gray-100 italic leading-relaxed mb-10">
+                  {translations.quote}
+                </p>
 
-                 <div className="space-y-4">
-                    {/* Phone Card */}
-                    <a 
-                      href={PHONE_HREF} 
-                      className="group flex items-center justify-between p-6 bg-charcoal-900 dark:bg-stone-100 text-white dark:text-charcoal-900 rounded-3xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-                    >
-                      <div className="flex items-center gap-5">
-                        <div className="w-12 h-12 rounded-full bg-white/10 dark:bg-black/10 flex items-center justify-center">
-                           <Phone size={24} weight="fill" />
-                        </div>
-                        <div className="flex flex-col">
-                           <span className="text-[10px] uppercase tracking-widest opacity-60 mb-1">{translations.call}</span>
-                           <span className="font-serif text-2xl md:text-3xl font-bold tracking-tight">{PHONE_NUMBER}</span>
-                        </div>
+                <div className="space-y-4">
+                  {/* Phone Card */}
+                  <a
+                    href={PHONE_HREF}
+                    className="group flex flex-col md:flex-row items-center justify-center md:items-center justify-between p-6 md:p-8 bg-charcoal-900 dark:bg-stone-100 text-white dark:text-charcoal-900 rounded-3xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full"
+                  >
+                    <div className="flex flex-col md:flex-row items-center gap-5 text-center md:text-left">
+                      <div className="w-16 h-16 md:w-14 md:h-14 rounded-full bg-white/10 dark:bg-black/10 flex items-center justify-center">
+                        <Phone size={28} weight="fill" />
                       </div>
-                      <ArrowRight size={20} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
-                    </a>
-
-                    {/* Email Card */}
-                    <a 
-                      href={`mailto:${translations.email}`}
-                      className="flex items-center gap-5 p-6 bg-stone-100 dark:bg-white/5 rounded-3xl hover:bg-stone-200 dark:hover:bg-white/10 transition-colors"
-                    >
-                       <div className="w-12 h-12 rounded-full bg-white dark:bg-white/10 flex items-center justify-center text-taupe-500 shadow-sm">
-                           <EnvelopeSimple size={24} />
-                       </div>
-                       <div className="flex flex-col">
-                           <span className="text-[10px] uppercase tracking-widest text-charcoal-900/50 dark:text-white/40 mb-1">{translations.email_label}</span>
-                           <span className="font-medium text-lg text-charcoal-900 dark:text-white">{translations.email}</span>
-                       </div>
-                    </a>
-                 </div>
+                      <div className="flex flex-col">
+                        <span className="text-[11px] uppercase tracking-widest opacity-60 mb-2 md:mb-1">{translations.call}</span>
+                        <span className="font-serif text-3xl md:text-4xl font-bold tracking-tight">{PHONE_NUMBER}</span>
+                      </div>
+                    </div>
+                    <ArrowRight size={24} className="opacity-0 group-hover:opacity-100 -translate-y-2 group-hover:translate-y-0 md:-translate-x-2 md:group-hover:translate-x-0 transition-all duration-300 hidden md:block" />
+                  </a>
+                </div>
               </div>
             </div>
 
             {/* Right Column: Calendar */}
             <div className="lg:col-span-7 w-full h-full min-h-[500px] bg-white dark:bg-stone-dark p-2 rounded-[2.5rem] shadow-soft border border-stone-200 dark:border-white/5 overflow-hidden order-1 lg:order-2">
-               <div className="w-full h-full rounded-[2rem] overflow-hidden bg-white">
-                  <iframe 
-                    src="https://calendar.google.com/calendar/embed?src=8b6becdf2ad7c40fcee5c32b695484bf1ae9f1080d335739732474da77b9cbfd%40group.calendar.google.com&ctz=Europe%2FRiga&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0" 
-                    style={{ border: 0 }} 
-                    width="100%" 
-                    height="100%" 
-                    frameBorder="0" 
-                    scrolling="no"
-                    title="Booking Calendar"
-                    className="w-full h-full min-h-[500px] dark:invert dark:hue-rotate-180 dark:opacity-90 dark:contrast-90 transition-all duration-500"
-                  />
-               </div>
+              <div className="w-full h-full rounded-[2rem] overflow-hidden bg-white">
+                <iframe
+                  src="https://calendar.google.com/calendar/embed?src=8b6becdf2ad7c40fcee5c32b695484bf1ae9f1080d335739732474da77b9cbfd%40group.calendar.google.com&ctz=Europe%2FRiga&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0"
+                  style={{ border: 0 }}
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  scrolling="no"
+                  title="Booking Calendar"
+                  className="w-full h-full min-h-[500px] dark:invert dark:hue-rotate-180 dark:opacity-90 dark:contrast-90 transition-all duration-500"
+                />
+              </div>
             </div>
 
           </div>
@@ -348,18 +334,18 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
 // Fixed FeatureCard with better contrast in Dark Mode and Responsive Padding
 const FeatureCard: React.FC<{ icon: React.ReactNode, title: string, items: string[] }> = ({ icon, title, items }) => (
   <div className="reveal-text bg-white dark:bg-stone-dark p-8 md:p-10 rounded-[2rem] border border-stone-200 dark:border-white/5 hover:border-taupe-500/50 transition-all duration-500 shadow-soft hover:shadow-xl h-full flex flex-col items-center text-center group">
-     <div className="w-16 h-16 rounded-2xl bg-taupe-500/5 flex items-center justify-center mb-6 md:mb-8 shadow-inner group-hover:scale-110 transition-transform duration-300">
-        {icon}
-     </div>
-     <h3 className="font-serif text-2xl md:text-3xl text-charcoal-900 dark:text-gray-100 mb-6 transition-colors">{title}</h3>
-     <ul className="space-y-4 w-full">
-        {items.map((item, idx) => (
-           <li key={idx} className="flex items-center justify-center gap-3 text-charcoal-900/80 dark:text-stone-300 font-light text-base md:text-lg transition-colors">
-              <CheckCircle weight="fill" className="w-5 h-5 text-taupe-500/80 flex-shrink-0" />
-              <span>{item}</span>
-           </li>
-        ))}
-     </ul>
+    <div className="w-16 h-16 rounded-2xl bg-taupe-500/5 flex items-center justify-center mb-6 md:mb-8 shadow-inner group-hover:scale-110 transition-transform duration-300">
+      {icon}
+    </div>
+    <h3 className="font-serif text-2xl md:text-3xl text-charcoal-900 dark:text-gray-100 mb-6 transition-colors">{title}</h3>
+    <ul className="space-y-4 w-full">
+      {items.map((item, idx) => (
+        <li key={idx} className="flex items-center justify-center gap-3 text-charcoal-900/80 dark:text-stone-300 font-light text-base md:text-lg transition-colors">
+          <CheckCircle weight="fill" className="w-5 h-5 text-taupe-500/80 flex-shrink-0" />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
   </div>
 );
 
