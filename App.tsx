@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useLayoutEffect } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation, Navigate, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate, useParams } from 'react-router-dom';
 import Lenis from 'lenis';
 
 // Components
@@ -81,8 +81,8 @@ const AppContent: React.FC = () => {
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1.0,
-      syncTouch: true,
-      touchMultiplier: 1.5,
+      syncTouch: false,
+      touchMultiplier: 1.0,
     });
 
     lenisRef.current = lenis;

@@ -135,7 +135,7 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
     return () => ctx.revert();
   }, [isPreloading]);
 
-  const mapBtnClass = "flex-1 min-w-[120px] px-4 py-4 bg-white dark:bg-stone-dark rounded-xl text-[10px] font-bold uppercase tracking-widest border border-stone-200 dark:border-white/10 text-charcoal-900 dark:text-gray-200 hover:bg-taupe-500 hover:text-white hover:border-taupe-500 dark:hover:bg-taupe-500 dark:hover:text-white dark:hover:border-taupe-500 hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg flex items-center justify-center gap-2 group";
+  const mapBtnClass = "flex-1 min-w-[120px] px-6 py-5 bg-white/70 dark:bg-stone-dark/70 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-widest border border-stone-200/50 dark:border-white/5 text-charcoal-900/60 dark:text-gray-400 hover:bg-white dark:hover:bg-mantle hover:text-charcoal-900 dark:hover:text-white hover:border-stone-200 dark:hover:border-white/10 hover:-translate-y-1 transition-all duration-400 shadow-sm hover:shadow-xl flex items-center justify-center gap-3 group";
 
   return (
     <main className="flex-1 w-full overflow-hidden bg-cream dark:bg-cream-dark transition-colors duration-500">
@@ -148,11 +148,11 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
 
       {/* --- HERO SECTION --- */}
       <section ref={heroRef} className="relative h-screen min-h-[600px] flex items-center px-4 md:px-6 overflow-hidden">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 will-change-transform">
           <img
             id="hero-bg"
             src="https://i.ibb.co/mVH0z4S8/Whats-App-Image-2025-10-25-at-16-40-18.jpg"
-            className="w-full h-full object-cover scale-105"
+            className="w-full h-full object-cover scale-105 will-change-transform"
             alt="Mežlīči"
           />
           <div className="absolute inset-0 bg-black/30 dark:bg-black/50 transition-colors duration-500" />
@@ -173,10 +173,10 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
           <div className="hero-anim opacity-0">
             <button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group inline-flex items-center gap-4 px-8 py-4 bg-white text-charcoal-900 rounded-full text-[11px] font-bold uppercase tracking-[0.2em] shadow-xl hover:-translate-y-1 transition-all duration-300"
+              className="group inline-flex items-center gap-4 px-10 py-5 bg-white/90 dark:bg-stone-dark/90 backdrop-blur-md border border-stone-200/50 dark:border-white/10 text-charcoal-900/60 dark:text-gray-300 rounded-full text-[11px] font-bold uppercase tracking-[0.2em] shadow-lg hover:shadow-2xl hover:bg-white dark:hover:bg-mantle hover:-translate-y-1 transition-all duration-400"
             >
               {translations.btn}
-              <ArrowRight size={16} weight="bold" className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={16} weight="bold" className="group-hover:translate-x-2 transition-transform duration-400" />
             </button>
           </div>
         </div>
@@ -213,10 +213,10 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
           <div className="mt-12 md:mt-16 text-center reveal-text">
             <Link
               to={`/${currentLang}/sauna`}
-              className="group inline-flex items-center gap-4 px-8 py-4 bg-transparent border border-charcoal-900/40 dark:border-white/40 text-charcoal-900 dark:text-gray-200 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-charcoal-900 hover:text-white dark:hover:bg-white dark:hover:text-charcoal-900 hover:-translate-y-1 transition-all duration-300"
+              className="group inline-flex items-center gap-4 px-10 py-5 bg-white/50 dark:bg-stone-dark/50 backdrop-blur-sm border border-stone-200 dark:border-white/10 text-charcoal-900/60 dark:text-gray-300 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm hover:shadow-xl hover:bg-white dark:hover:bg-mantle hover:-translate-y-1 transition-all duration-400"
             >
               {translations.sauna_link}
-              <CaretRight size={14} weight="bold" className="group-hover:translate-x-1 transition-transform" />
+              <CaretRight size={14} weight="bold" className="group-hover:translate-x-2 transition-transform duration-400" />
             </Link>
           </div>
         </div>
