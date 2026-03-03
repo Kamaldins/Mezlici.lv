@@ -135,7 +135,7 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
     return () => ctx.revert();
   }, [isPreloading]);
 
-  const mapBtnClass = "flex-1 min-w-[120px] px-6 py-5 bg-white/70 dark:bg-stone-dark/70 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-widest border border-stone-200/50 dark:border-white/5 text-charcoal-900/60 dark:text-gray-400 hover:bg-white dark:hover:bg-mantle hover:text-charcoal-900 dark:hover:text-white hover:border-stone-200 dark:hover:border-white/10 hover:-translate-y-1 transition-all duration-400 shadow-sm hover:shadow-xl flex items-center justify-center gap-3 group";
+  const mapBtnClass = "flex-1 min-w-[120px] px-6 py-5 bg-gradient-to-tr from-white to-stone-50 dark:from-stone-800 dark:to-stone-900 backdrop-blur-xl text-[10px] font-bold uppercase tracking-widest border border-white/50 dark:border-white/10 text-charcoal-900/70 dark:text-gray-300 hover:opacity-80 hover:-translate-y-1 transition-all duration-400 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:shadow-xl flex items-center justify-center gap-3 group rounded-2xl";
 
   return (
     <main className="flex-1 w-full overflow-hidden bg-cream dark:bg-cream-dark transition-colors duration-500">
@@ -183,7 +183,7 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
       </section>
 
       {/* --- AMENITIES --- */}
-      <section className="py-20 md:py-32 px-4 md:px-6 bg-cream dark:bg-cream-dark transition-colors duration-500">
+      <section className="py-20 md:py-32 px-4 md:px-6 bg-transparent transition-colors duration-500 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 md:mb-16 reveal-text">
             <span className="text-taupe-500 text-[11px] font-bold tracking-[0.3em] uppercase mb-4 block">{translations.offers}</span>
@@ -223,7 +223,7 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
       </section>
 
       {/* --- MAP --- */}
-      <section className="py-20 md:py-32 px-4 md:px-6 bg-stone-100 dark:bg-stone-dark transition-colors duration-500">
+      <section className="py-20 md:py-32 px-4 md:px-6 bg-transparent transition-colors duration-500 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12 md:mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-8 md:gap-12 reveal-text">
             <div className="max-w-xl">
@@ -270,7 +270,7 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
       </section>
 
       {/* --- CONTACT / RESERVATION --- */}
-      <section id="contact" className="py-20 md:py-32 px-4 md:px-6 bg-cream dark:bg-cream-dark border-t border-stone-200 dark:border-white/5 transition-colors duration-500">
+      <section id="contact" className="py-20 md:py-32 px-4 md:px-6 bg-transparent transition-colors duration-500 relative z-10">
         <div className="max-w-7xl mx-auto reveal-text">
           <div className="text-center mb-16">
             <span className="text-taupe-500 text-[11px] font-bold tracking-[0.3em] uppercase mb-6 block">{translations.contact_tag}</span>
@@ -281,7 +281,7 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
 
             {/* Left Column: Contact Details (Redesigned for elegance) */}
             <div className="lg:col-span-5 flex flex-col gap-6 order-2 lg:order-1">
-              <div className="bg-white dark:bg-stone-dark p-8 md:p-10 rounded-[2.5rem] shadow-soft border border-stone-200 dark:border-white/5 h-full flex flex-col justify-center">
+              <div className="bg-gradient-to-tr from-white to-stone-50 dark:from-stone-800 dark:to-stone-900 p-8 md:p-10 rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] border border-white/50 dark:border-white/10 h-full flex flex-col justify-center backdrop-blur-xl">
                 <p className="font-serif text-2xl text-charcoal-900 dark:text-gray-100 italic leading-relaxed mb-10">
                   {translations.quote}
                 </p>
@@ -290,11 +290,11 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
                   {/* Phone Card */}
                   <a
                     href={PHONE_HREF}
-                    className="group flex flex-col md:flex-row items-center justify-center md:items-center justify-between p-6 md:p-8 bg-charcoal-900 dark:bg-stone-100 text-white dark:text-charcoal-900 rounded-3xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full"
+                    className="group flex flex-col md:flex-row items-center justify-center md:items-center justify-between p-6 md:p-8 bg-charcoal-900/5 dark:bg-white/5 text-charcoal-900 dark:text-white rounded-3xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 w-full border border-stone-200/50 dark:border-white/10"
                   >
                     <div className="flex flex-col md:flex-row items-center gap-5 text-center md:text-left">
-                      <div className="w-16 h-16 md:w-14 md:h-14 rounded-full bg-white/10 dark:bg-black/10 flex items-center justify-center">
-                        <Phone size={28} weight="fill" />
+                      <div className="w-16 h-16 md:w-14 md:h-14 rounded-full bg-white dark:bg-black/20 flex items-center justify-center shadow-sm">
+                        <Phone size={28} weight="fill" className="text-charcoal-900 dark:text-white" />
                       </div>
                       <div className="flex flex-col">
                         <span className="text-[11px] uppercase tracking-widest opacity-60 mb-2 md:mb-1">{translations.call}</span>
@@ -308,7 +308,7 @@ const Home: React.FC<{ isPreloading?: boolean }> = ({ isPreloading = false }) =>
             </div>
 
             {/* Right Column: Calendar */}
-            <div className="lg:col-span-7 w-full h-full min-h-[500px] bg-white dark:bg-stone-dark p-2 rounded-[2.5rem] shadow-soft border border-stone-200 dark:border-white/5 overflow-hidden order-1 lg:order-2">
+            <div className="lg:col-span-7 w-full h-full min-h-[500px] bg-gradient-to-tr from-white to-stone-50 dark:from-stone-800 dark:to-stone-900 p-2 rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] border border-white/50 dark:border-white/10 overflow-hidden order-1 lg:order-2 backdrop-blur-xl">
               <div className="w-full h-full rounded-[2rem] overflow-hidden bg-white">
                 <iframe
                   src="https://calendar.google.com/calendar/embed?src=8b6becdf2ad7c40fcee5c32b695484bf1ae9f1080d335739732474da77b9cbfd%40group.calendar.google.com&ctz=Europe%2FRiga&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0"
