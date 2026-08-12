@@ -18,6 +18,7 @@ interface Translation {
   back: string;
   title: string;
   intro: string;
+  controller: string;
   sections: Section[];
   updated: string;
 }
@@ -31,6 +32,7 @@ const Policy: React.FC = () => {
       back: "Atpakaļ",
       title: "Privātuma Politika",
       intro: "Mēs augstu vērtējam jūsu privātumu un datu drošību.",
+      controller: "Datu pārzinis: Brīvdienu māja 'Mežlīči'. Saziņai par datu apstrādi: info@mezlici.lv",
       sections: [
         { 
           title: "1. Vispārīgie Noteikumi un Tiesiskais Pamats", 
@@ -103,12 +105,13 @@ const Policy: React.FC = () => {
           ]
         }
       ],
-      updated: "Atjaunots: 2025. gada Janvāris"
+      updated: "Atjaunots: 2026. gada Augusts"
     },
     en: {
       back: "Back",
       title: "Privacy Policy",
       intro: "We highly value your privacy and data security.",
+      controller: "Data Controller: Holiday home 'Mežlīči'. For inquiries regarding data processing: info@mezlici.lv",
       sections: [
         { 
           title: "1. General Provisions & Legal Basis", 
@@ -181,12 +184,13 @@ const Policy: React.FC = () => {
           ]
         }
       ],
-      updated: "Updated: January 2025"
+      updated: "Updated: August 2026"
     },
     ru: {
       back: "Назад",
       title: "Политика Конфиденциальности",
       intro: "Мы высоко ценим вашу конфиденциальность и безопасность данных.",
+      controller: "Контролер данных: Дом отдыха 'Mežlīči'. По вопросам обработки данных: info@mezlici.lv",
       sections: [
         { 
           title: "1. Общие положения и Правовая основа", 
@@ -259,7 +263,7 @@ const Policy: React.FC = () => {
           ]
         }
       ],
-      updated: "Обновлено: Январь 2025"
+      updated: "Обновлено: Август 2026"
     }
   };
 
@@ -293,6 +297,10 @@ const Policy: React.FC = () => {
         <div className="space-y-12 text-charcoal-800 dark:text-cream/80 leading-relaxed font-light text-lg transition-colors">
           <p className="text-2xl font-serif italic text-charcoal-900 dark:text-cream">
             {t.intro}
+          </p>
+          
+          <p className="text-sm font-medium text-charcoal-900 dark:text-cream/90">
+            {t.controller}
           </p>
           
           {t.sections.map((section, idx) => (

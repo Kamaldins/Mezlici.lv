@@ -78,10 +78,10 @@ const Footer: React.FC<FooterProps> = ({ theme, toggleTheme }) => {
           <div className="flex flex-col gap-3 w-full max-w-[220px]">
             {/* Theme Toggle */}
             <div className={controlGroupClass}>
-              <button onClick={() => theme !== 'light' && toggleTheme?.()} className={toggleBtnClass(theme === 'light')}>
+              <button onClick={() => toggleTheme?.()} className={toggleBtnClass(theme === 'light')}>
                 <Sun size={14} weight="fill" /> {t.light}
               </button>
-              <button onClick={() => theme !== 'dark' && toggleTheme?.()} className={toggleBtnClass(theme === 'dark')}>
+              <button onClick={() => toggleTheme?.()} className={toggleBtnClass(theme === 'dark')}>
                 <Moon size={14} weight="fill" /> {t.dark}
               </button>
             </div>
